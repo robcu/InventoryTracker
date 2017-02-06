@@ -10,5 +10,4 @@ public class InventoryItem {
         this.name = name;
         this.quantity = quantity;
     }
-
 }

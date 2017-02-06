@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -8,11 +9,32 @@ public class Main {
     //remove item
     //change item quantity
 
+
     static ArrayList<InventoryItem> inventory = new ArrayList();
 
-    public static void main(String[] args) {
+    static HashMap userDatabase = new HashMap();
+    static Scanner scanner = new Scanner(System.in);
 
-        Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        boolean loggedIn = false;
+        userDatabase.put("Rob", "asdf");
+        userDatabase.put("James", "1234");
+
+        while(!loggedIn){
+            System.out.println("Welcome to Inventory Pro");
+            System.out.println("Enter username: ");
+            String username = scanner.nextLine();
+            System.out.println("Enter password: ");
+            String password = scanner.nextLine();
+            if(userDatabase.containsKey(username) && userDatabase.get(username).equals(password)){
+                loggedIn = true;
+            }
+            else{
+                System.out.println("Username and password combination does not match any accounts " +
+                        "on file. Please try again.");
+            }
+        }
 
         while(true) {
             System.out.println("Inventory Options:");
@@ -42,11 +64,13 @@ public class Main {
                     break;
                 case 4:
                     for(int i = 0; i < inventory.size(); i++){
-                        System.out.println("[" + (i+1) + "] - " + inventory.get(i).name + ", " + inventory.get(i).quantity);
+                        System.out.println("[" + (i+1) + "] - " + inventory.get(i).name + ", "
+                                + inventory.get(i).quantity);
                     }
+                    System.out.println("/n");
                     break;
                 default:
-                    System.out.println("default");
+                    System.out.println("Invalid option. Try again.");
 
             }
         }
