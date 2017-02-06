@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class User {
 
     static HashMap userDatabase = new HashMap();
-    static Scanner userScanner = new Scanner();
+    static Scanner userScanner = new Scanner(System.in);
     boolean loggedIn;
 
     void verifyUser(){
