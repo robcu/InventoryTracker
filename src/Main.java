@@ -4,36 +4,16 @@ import java.util.Scanner;
 
 public class Main {
 
-    //print inventory
-    //add item
-    //remove item
-    //change item quantity
-
-
     static ArrayList<InventoryItem> inventory = new ArrayList();
 
     static HashMap userDatabase = new HashMap();
     static Scanner scanner = new Scanner(System.in);
-
+    static User user = new User();
 
     public static void main(String[] args) {
-        boolean loggedIn = false;
-        userDatabase.put("Rob", "asdf");
-        userDatabase.put("James", "1234");
 
-        while(!loggedIn){
-            System.out.println("Welcome to Inventory Pro");
-            System.out.println("Enter username: ");
-            String username = scanner.nextLine();
-            System.out.println("Enter password: ");
-            String password = scanner.nextLine();
-            if(userDatabase.containsKey(username) && userDatabase.get(username).equals(password)){
-                loggedIn = true;
-            }
-            else{
-                System.out.println("Username and password combination does not match any accounts " +
-                        "on file. Please try again.");
-            }
+        while(!user.loggedIn){
+            user.verifyUser();
         }
 
         while(true) {
@@ -63,11 +43,12 @@ public class Main {
                     inventory.set(key, tobeModified);
                     break;
                 case 4:
+                    System.out.println("Inventory contents:");
                     for(int i = 0; i < inventory.size(); i++){
                         System.out.println("[" + (i+1) + "] - " + inventory.get(i).name + ", "
                                 + inventory.get(i).quantity);
                     }
-                    System.out.println("/n");
+                    System.out.println("\n");
                     break;
                 default:
                     System.out.println("Invalid option. Try again.");
