@@ -53,8 +53,7 @@ public class Inventory {
         System.out.println("Enter the number of the item, the quantity of which you wish to change:");
         Integer key = Integer.parseInt(scanner.nextLine()) - 1;
         System.out.println("Enter the new quantity:");
-        Integer newQuantity = Integer.parseInt(scanner.nextLine());
-        InventoryItem tobeModified = new InventoryItem(inventory.get(key).name, newQuantity);
+        InventoryItem tobeModified = new InventoryItem(inventory.get(key).name, Integer.parseInt(scanner.nextLine()));
         inventory.set(key, tobeModified);
     }
 
